@@ -4,6 +4,7 @@ import { professionalMapper } from '@/forms/professional/mapper';
 import { pucMapper } from '@/forms/puc/mapper';
 import { newStudentMapper } from '@/forms/newStudent/mapper';
 import { semiProfessionalMapper } from '@/forms/semiProfessional/mapper';
+import { pucFormat11Mapper } from '@/forms/pucFormat11/mapper';
 import { FormType } from '@/forms/shared/types';
 import { NewStudentFormValues, PayanaFormValues, ProfessionalFormValues, PucFormValues, SemiProfessionalFormValues } from '@/types/forms';
 import '@/utils/polyfillFormData';
@@ -14,7 +15,7 @@ export type SubmissionPayload = FormData;
 
 export function preparePayload(
   formType: FormType,
-  formData: ProfessionalFormValues | PucFormValues | PayanaFormValues | SemiProfessionalFormValues | NewStudentFormValues
+  formData: ProfessionalFormValues | PucFormValues | PayanaFormValues | SemiProfessionalFormValues | NewStudentFormValues | any
 ): SubmissionPayload {
   console.log(`[preparePayload] Preparing payload for ${formType}`);
   console.log(`[preparePayload] Input formData keys:`, Object.keys(formData as any));
@@ -40,6 +41,8 @@ export function preparePayload(
     payload = payanaMapper(formData as PayanaFormValues);
   } else if (formType === 'newStudent') {
     payload = newStudentMapper(formData as NewStudentFormValues);
+  } else if (formType === 'pucFormat11') {
+    payload = pucFormat11Mapper(formData);
   } else {
     payload = pucMapper(formData as unknown as PucFormat11FormValues);
   }

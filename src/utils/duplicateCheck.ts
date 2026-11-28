@@ -6,6 +6,7 @@ import { FormType } from '@/forms/shared/types';
 const PROGRAM_LABELS: Record<FormType, string> = {
   professional: 'Professional',
   puc: 'PUC',
+  pucFormat11: 'PUC Format 1.1',
   payana: 'Payana',
   semiProfessional: 'SemiProfessional',
   newStudent: 'Student',
@@ -15,6 +16,9 @@ export function getContactNumber(
   formType: FormType,
   formData: any,
 ): string | null {
+  if (formType === 'pucFormat11') {
+    return formData?.personal?.ContactNumber ?? null;
+  }
   if (formType === 'semiProfessional') {
     return formData?.personal?.contactNumber ?? null;
   }

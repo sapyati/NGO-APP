@@ -194,7 +194,7 @@ function DrawerSidebar({
 
               <Text style={styles.drawerSectionLabel}>FORMAT 1.1</Text>
               {[
-                { icon: 'school-outline' as const,    label: 'PUC Format 1.1',          route: '/form-engine?formType=puc' },
+                { icon: 'school-outline' as const,    label: 'PUC Format 1.1',          route: '/form-engine?formType=pucFormat11' },
                 { icon: 'briefcase-outline' as const, label: 'Professional Format 1.1', route: '/form-engine?formType=professional' },
               ].map((item) => renderNavItem(item))}
               <View style={styles.drawerDivider} />

@@ -2,6 +2,7 @@ import { createNewStudent } from '@/api/newStudentApi';
 import { createPayanaStudent } from '@/api/payanaApi';
 import { createProfessionalStudent } from '@/api/professionalApi';
 import { createPUCStudent } from '@/api/pucApi';
+import { createPucFormat11Student } from '@/api/pucFormat11Api';
 import { createSemiProfessionalStudent } from '@/api/semiProfessionalApi';
 import { NormalizedApiResponse } from '@/api/transformers/normalizeApiResponse';
 import { generateSubmissionId, error as logError, info as logInfo, truncateStack } from '@/diagnostics';
@@ -42,6 +43,8 @@ export async function submitApplication(
       response = await createSemiProfessionalStudent(payload);
     } else if (formType === 'puc') {
       response = await createPUCStudent(payload);
+    } else if (formType === 'pucFormat11') {
+      response = await createPucFormat11Student(payload);
     } else if (formType === 'newStudent') {
       response = await createNewStudent(payload);
     } else {

@@ -290,8 +290,25 @@ export const useFormEngineStore = create<FormEngineStore>((set, get) => ({
         familyPhoto: { isUploading: false, uploaded: false, error: undefined, progress: 0 },
         houseVideo: { isUploading: false, uploaded: false, error: undefined, progress: 0 },
       };
+    } else if (formType === 'pucFormat11') {
+      // PUC Format 1.1 form (after login)
+      safeFormData = {
+        personal: { Email: '', StudentName: '', ContactNumber: '', AlternateNumber: '', Gender: 0, DateOfBirth: '', Caste: 0, Place: 0 },
+        address: { District: 0, OtherDistrict: '', Taluk: '', ResidentialAddress: '', PinCode: '' },
+        family: { FatherOccupation: 0, MotherOccupation: 0, TotalFamilyMembers: 0, FamilyAnnualIncome: 0, ParentsBankBalance: 0 },
+        academic: { SSLCPercentage: 0, CourseJoined: 0, CollegeName: '', CollegeType: 0, CollegeFees: 0, CollegeContactNumber: '', Achievement: '' },
+        bank: { AccountHolderName: '', AccountNumber: '', IFSCCode: '', BankName: '', BranchName: '' },
+        documents: { StudentSelfie: undefined, SSLCMarksCard: undefined, FeeReceipts: undefined, BankPassbook: undefined, AadhaarCard: undefined },
+      } as any;
+      initialUploadState = {
+        StudentSelfie: { isUploading: false, uploaded: false, error: undefined, progress: 0 },
+        SSLCMarksCard: { isUploading: false, uploaded: false, error: undefined, progress: 0 },
+        FeeReceipts: { isUploading: false, uploaded: false, error: undefined, progress: 0 },
+        BankPassbook: { isUploading: false, uploaded: false, error: undefined, progress: 0 },
+        AadhaarCard: { isUploading: false, uploaded: false, error: undefined, progress: 0 },
+      };
     } else {
-      // PUC Format 1.1 form
+      // PUC public form (before login)
       safeFormData = {
         personal: { StudentName: '', DateOfBirth: '', Gender: 0, Caste: 0, Place: 0 },
         contact: { Email: '', ContactNumber: '', AlternateNumber: '' },

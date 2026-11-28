@@ -55,11 +55,21 @@ import NsFamilySection from '../screens/form-sections/newStudent/FamilySection';
 import NsGuidelinesSection from '../screens/form-sections/newStudent/GuidelinesSection';
 import NsPersonalSection from '../screens/form-sections/newStudent/PersonalSection';
 
+// Import PUC Format 1.1 form section components (after login)
+import PucFormat11AcademicSection from '../screens/form-sections/pucFormat11/AcademicSection';
+import PucFormat11AddressSection from '../screens/form-sections/pucFormat11/AddressSection';
+import PucFormat11BankSection from '../screens/form-sections/pucFormat11/BankSection';
+import PucFormat11DocumentSection from '../screens/form-sections/pucFormat11/DocumentSection';
+import PucFormat11FamilySection from '../screens/form-sections/pucFormat11/FamilySection';
+import PucFormat11GuidelinesSection from '../screens/form-sections/pucFormat11/GuidelinesSection';
+import PucFormat11PersonalSection from '../screens/form-sections/pucFormat11/PersonalSection';
+import PucFormat11ReviewSection from '../screens/form-sections/pucFormat11/ReviewSection';
+
 interface FormRendererProps {
   navigation: any;
   route: {
     params?: {
-      formType?: 'professional' | 'puc' | 'payana' | 'semiProfessional' | 'newStudent';
+      formType?: 'professional' | 'puc' | 'payana' | 'semiProfessional' | 'newStudent' | 'pucFormat11';
     };
   };
 }
@@ -119,6 +129,18 @@ const newStudentComponentMap: Record<string, React.ComponentType<any>> = {
   academic: NsAcademicSection,
   documents: NsDocumentSection,
   review: ReviewSection,
+  success: SuccessSection,
+};
+
+const pucFormat11ComponentMap: Record<string, React.ComponentType<any>> = {
+  guidelines: PucFormat11GuidelinesSection,
+  personal: PucFormat11PersonalSection,
+  address: PucFormat11AddressSection,
+  family: PucFormat11FamilySection,
+  academic: PucFormat11AcademicSection,
+  bank: PucFormat11BankSection,
+  documents: PucFormat11DocumentSection,
+  review: PucFormat11ReviewSection,
   success: SuccessSection,
 };
 
@@ -189,6 +211,7 @@ export default function FormRenderer({ navigation, route }: FormRendererProps) {
   // Select the correct component map based on form type
   const getActiveComponentMap = () => {
     if (formType === 'puc') return pucComponentMap;
+    if (formType === 'pucFormat11') return pucFormat11ComponentMap;
     if (formType === 'payana') return payanaComponentMap;
     if (formType === 'semiProfessional') return semiProfessionalComponentMap;
     if (formType === 'newStudent') return newStudentComponentMap;

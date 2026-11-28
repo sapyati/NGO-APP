@@ -464,6 +464,93 @@ describe('Form Submission', () => {
 
       consoleSpy.mockRestore();
     });
+
+    it('should emit PUC Format 1.1 multipart fields for internal form', () => {
+      const mockFormData = {
+        personal: {
+          StudentName: 'Deepa C',
+          Email: 'deepa@example.com',
+          ContactNumber: '9876543210',
+          AlternateNumber: '9876543211',
+          Gender: 2,
+          DateOfBirth: '2008-05-15',
+          Caste: 2,
+          Place: 1,
+        },
+        address: {
+          District: 1,
+          Taluk: 'Dharwad',
+          ResidentialAddress: 'Line 1, Dharwad',
+          PinCode: '580001',
+        },
+        family: {
+          FatherOccupation: 4,
+          MotherOccupation: 3,
+          TotalFamilyMembers: 4,
+          FamilyAnnualIncome: 120000,
+          ParentsBankBalance: 25000,
+        },
+        academic: {
+          SSLCPercentage: 88.5,
+          CourseJoined: 2,
+          CollegeName: 'Govt PU College',
+          CollegeType: 1,
+          CollegeFees: 5000,
+          CollegeContactNumber: '9876543212',
+          Achievement: 'Sports champion',
+        },
+        bank: {
+          AccountHolderName: 'Deepa C',
+          AccountNumber: '123456789012',
+          IFSCCode: 'SBIN0001234',
+          BankName: 'State Bank of India',
+          BranchName: 'Dharwad Main',
+        },
+        documents: {
+          StudentSelfie: { file: { uri: 'file://selfie.jpg', name: 'selfie.jpg', type: 'image/jpeg' } },
+          SSLCMarksCard: { file: { uri: 'file://sslc.jpg', name: 'sslc.jpg', type: 'image/jpeg' } },
+          FeeReceipts: { file: { uri: 'file://fees.jpg', name: 'fees.jpg', type: 'image/jpeg' } },
+          BankPassbook: { file: { uri: 'file://passbook.jpg', name: 'passbook.jpg', type: 'image/jpeg' } },
+          AadhaarCard: { file: { uri: 'file://aadhaar.jpg', name: 'aadhaar.jpg', type: 'image/jpeg' } },
+        },
+      };
+
+      const payload = preparePayload('pucFormat11', mockFormData);
+      expect(payload).toBeInstanceOf(FormData);
+
+      const keys = formDataKeys(payload);
+      expect(keys).toContain('StudentName');
+      expect(keys).toContain('Email');
+      expect(keys).toContain('ContactNumber');
+      expect(keys).toContain('Gender');
+      expect(keys).toContain('Caste');
+      expect(keys).toContain('Place');
+      expect(keys).toContain('District');
+      expect(keys).toContain('Taluk');
+      expect(keys).toContain('ResidentialAddress');
+      expect(keys).toContain('FatherOccupation');
+      expect(keys).toContain('MotherOccupation');
+      expect(keys).toContain('TotalFamilyMembers');
+      expect(keys).toContain('FamilyAnnualIncome');
+      expect(keys).toContain('ParentsBankBalance');
+      expect(keys).toContain('SSLCPercentage');
+      expect(keys).toContain('CourseJoined');
+      expect(keys).toContain('CollegeName');
+      expect(keys).toContain('CollegeType');
+      expect(keys).toContain('CollegeFees');
+      expect(keys).toContain('CollegeContactNumber');
+      expect(keys).toContain('Achievement');
+      expect(keys).toContain('AccountHolderName');
+      expect(keys).toContain('AccountNumber');
+      expect(keys).toContain('IFSCCode');
+      expect(keys).toContain('BankName');
+      expect(keys).toContain('BranchName');
+      expect(keys).toContain('StudentSelfie');
+      expect(keys).toContain('SSLCMarksCard');
+      expect(keys).toContain('FeeReceipts');
+      expect(keys).toContain('BankPassbook');
+      expect(keys).toContain('AadhaarCard');
+    });
   });
 
   describe('validatePayload', () => {

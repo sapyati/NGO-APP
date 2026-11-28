@@ -14,6 +14,7 @@ export const APP_TITLES = {
   professionalApplication: 'Vidya Poshak Financial Assistance\nApplication form for Engineering and Medical students\n2026-2027',
   pucApplication: 'Vidya Poshak Financial Assistance Application\nfor PUC-I Commerce and Diploma-I Students\n2026-2027',
   semiProfessionalApplication: 'Vidya Poshak Financial Assistance Application form\nfor SemiProfessional (For B.ScNursing, GNM- Nursing, Physiotherapy,\nB.Sc- Agriculture, Veterinary Science & Horticulture)-2026-2027',
+  pucFormat11Application: 'Format 1.1 - Student Information Sheet - 2026-2027',
   payanaApplication: 'Payana New Student Application',
   studentRegistration: 'Student Registration',
   newPayana: 'New Payana Application',

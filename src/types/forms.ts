@@ -51,7 +51,7 @@ export type FormDataUnion = ProfessionalFormValues | PucFormValues | PayanaFormV
 
 // Form engine state interface (using Zod-inferred types)
 export interface FormEngineState {
-  currentFormType: 'professional' | 'puc' | 'payana' | 'semiProfessional' | 'newStudent' | null;
+  currentFormType: 'professional' | 'puc' | 'payana' | 'semiProfessional' | 'newStudent' | 'pucFormat11' | null;
   currentStep: number;
   completedSteps: Record<number, boolean>;
   formData: FormDataUnion;

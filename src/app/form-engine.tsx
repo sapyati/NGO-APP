@@ -12,7 +12,7 @@ export default function FormEngineScreen() {
         navigation={{}}
         route={{
           params: {
-            formType: formType as 'professional' | 'puc' | 'payana' | 'semiProfessional' | 'newStudent' || 'professional'
+            formType: (formType as 'professional' | 'puc' | 'payana' | 'semiProfessional' | 'newStudent' | 'pucFormat11') || 'professional'
           }
         }}
       />
