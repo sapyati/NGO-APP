@@ -31,7 +31,7 @@ export const homeSections: HomeSection[] = [
   {
     id: 'new-scholarships',
     title: 'Apply for a New Scholarship',
-    subtitle: 'Choose the scholarship that matches your education.',
+    subtitle: 'Select your current education level',
     accent: 'primary',
     items: [
       {

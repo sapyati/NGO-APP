@@ -435,8 +435,8 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   sectionSubtitle: {
-    fontSize: platform.normalize.fontSize.body,
-    lineHeight: platform.normalize.lineHeight.body,
+    fontSize: platform.normalize.fontSize.caption,
+    lineHeight: platform.normalize.lineHeight.caption,
     color: colors.textSecondary,
     marginTop: 4,
   },
