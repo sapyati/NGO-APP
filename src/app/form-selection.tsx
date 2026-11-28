@@ -248,20 +248,21 @@ export default function FormSelectionScreen() {
 
         {/* Support Section */}
         <View style={styles.supportCard}>
-          <View style={styles.supportIconContainer}>
-            <Ionicons name="headset-outline" size={36} color={colors.primary} />
-          </View>
-          <View style={styles.supportContent}>
+          <View style={styles.supportHeader}>
+            <View style={styles.supportIconContainer}>
+              <Ionicons name="headset-outline" size={20} color={colors.primary} />
+            </View>
             <Text style={styles.supportTitle}>Need Help?</Text>
-            <Text style={styles.supportSubtitle}>
-              Not sure which scholarship is right for you?
-            </Text>
           </View>
+          <Text style={styles.supportSubtitle}>
+            Not sure which scholarship is right for you?
+          </Text>
           <TouchableOpacity
             style={styles.supportButton}
             onPress={handleContactSupport}
             activeOpacity={0.8}
           >
+            <Ionicons name="call-outline" size={16} color="#FFFFFF" style={styles.supportButtonIcon} />
             <Text style={styles.supportButtonText}>Contact Support</Text>
           </TouchableOpacity>
         </View>
@@ -526,8 +527,6 @@ const styles = StyleSheet.create({
 
   // Support
   supportCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: colors.card,
     borderRadius: 16,
     padding: spacing.md,
@@ -535,17 +534,19 @@ const styles = StyleSheet.create({
     marginBottom: spacing.lg,
     ...platform.elevation.card,
   },
+  supportHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: spacing.xs,
+  },
   supportIconContainer: {
-    width: 56,
-    height: 56,
-    borderRadius: 16,
-    backgroundColor: colors.primary + '12',
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    backgroundColor: colors.primary + '15',
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: spacing.md,
-  },
-  supportContent: {
-    flex: 1,
+    marginRight: spacing.sm,
   },
   supportTitle: {
     fontSize: platform.normalize.fontSize.h3,
@@ -554,16 +555,22 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   supportSubtitle: {
-    fontSize: platform.normalize.fontSize.caption,
-    lineHeight: platform.normalize.lineHeight.caption,
+    fontSize: platform.normalize.fontSize.body,
+    lineHeight: 20,
     color: colors.textSecondary,
-    marginTop: 2,
+    marginBottom: spacing.md,
   },
   supportButton: {
+    alignSelf: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: colors.primary,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
     borderRadius: 10,
+  },
+  supportButtonIcon: {
+    marginRight: 6,
   },
   supportButtonText: {
     color: '#FFFFFF',
